@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body, .App {
+  width: 100vw;
+  height: 100vh;
+}
+
+.stack {
+  position: relative;
+  .card {
+    position: absolute;
+    z-index: 4;
+    &:nth-child(2) {
+      z-index: 3;
+      transform: rotate(3deg) translate(5px, 3px);
+    }
+    &:nth-child(3) {
+      z-index: 2;
+      transform: rotate(7deg) translate(11px, 6px);
+    }
+  }
+}
+
+.hand {
+  gap: 8px;
+  .card {
+
+  }
+}
+
+#selection-list {
+  position: relative;
+  &.finished {
+    animation: selectionDone 200ms forwards;
+  }
+  
+}
+
+.selectionCard {
+  transition: transform 300ms linear;
+  img {
+    aspect-ratio: 1;
+    width: 166px;
+    height: 166px;
+  }
+  &.moveCard {
+    position: absolute;
+    transition: top 2s ease 0s; /* only transition top property */
+    top: 0;
+  }
+}
+
+@keyframes selectionDone {
+  from {
+    justify-content: space-between;
+  }
+
+  to {
+    justify-content: center;
+  }
+}
